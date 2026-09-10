@@ -77,8 +77,8 @@ model. Media Studio does the opposite:
 ## 🚀 Quick start
 
 ```bash
-git clone https://github.com/pasquelin/camera-editor.git
-cd camera-editor
+git clone https://github.com/pasquelin/media-studio.git
+cd media-studio
 pnpm install
 pnpm build
 ```
