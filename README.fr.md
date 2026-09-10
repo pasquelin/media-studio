@@ -77,8 +77,8 @@ leur modèle de données. Media Studio fait l'inverse :
 ## 🚀 Démarrage rapide
 
 ```bash
-git clone https://github.com/pasquelin/media-studio.git
-cd media-studio
+git clone https://github.com/pasquelin/camera-editor.git
+cd camera-editor
 pnpm install
 pnpm build
 ```
