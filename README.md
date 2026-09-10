@@ -2,11 +2,11 @@
 
 # 🎬 Media Studio SDK
 
-**Le SDK de création, d'édition et d'export photo/vidéo pour React Native + Expo.**
+**The photo and video creation, editing and export SDK for React Native + Expo.**
 
-Caméra, éditeur photo, éditeur vidéo, filtres, textes animés, stickers, transitions,
-audio et export en arrière-plan — dans un socle **100 % headless**, entièrement
-remplaçable, pilotable sans interface.
+Camera, photo editor, video editor, filters, animated text, stickers, transitions,
+audio and background export — on a **100% headless** core that is fully
+replaceable and drivable without any interface.
 
 [![React Native](https://img.shields.io/badge/React%20Native-%E2%89%A50.76-61DAFB?logo=react&logoColor=white)](https://reactnative.dev)
 [![Expo](https://img.shields.io/badge/Expo-SDK%2052+-000020?logo=expo&logoColor=white)](https://expo.dev)
@@ -14,59 +14,59 @@ remplaçable, pilotable sans interface.
 [![pnpm](https://img.shields.io/badge/pnpm-workspaces-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
 [![Turborepo](https://img.shields.io/badge/Turborepo-monorepo-EF4444?logo=turborepo&logoColor=white)](https://turbo.build)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
-[![Status](https://img.shields.io/badge/statut-alpha-orange.svg)](./docs/10-ROADMAP.md)
+[![Status](https://img.shields.io/badge/status-alpha-orange.svg)](./docs/10-ROADMAP.md)
 
-[Documentation](./docs/README.md) · [Architecture](./docs/01-ARCHITECTURE.md) · [Roadmap](./docs/10-ROADMAP.md) · [Exemples](#-exemples)
+[Documentation](./docs/README.md) · [Architecture](./docs/01-ARCHITECTURE.md) · [Roadmap](./docs/10-ROADMAP.md) · [Examples](#-examples) · **[Documentation 🇫🇷](./README.fr.md)**
 
 </div>
 
 ---
 
-## Pourquoi ce SDK
+## Why this SDK
 
-La plupart des bibliothèques d'édition média imposent leur UI, leur pipeline natif et
-leur modèle de données. Media Studio fait l'inverse :
+Most media editing libraries impose their UI, their native pipeline and their data
+model. Media Studio does the opposite:
 
-| Principe | Ce que ça change concrètement |
+| Principle | What it changes in practice |
 |---|---|
-| 🧠 **Headless-first** | Toute la logique (projet, commandes, moteurs, export) tourne dans Node, sans device ni UI. Testable en millisecondes. |
-| 🔌 **Ports injectés** | Aucune dépendance native en dur : `NativeEncoder`, `Clock`, `LicenseValidator`, `StorageAdapter`, `PluginVerifier`, `FontManager`… sont fournis par l'intégrateur. |
-| 🎛️ **UI remplaçable** | Les composants React fournis sont une commodité, pas une contrainte. Vous branchez la vôtre sur les mêmes contrôleurs. |
-| ↩️ **Tout passe par le CommandBus** | Chaque mutation est une commande → undo/redo gratuit, historique, sérialisation. |
-| 🧩 **Extensible par registry** | Filtres, stickers, transitions, types d'objets : ajoutés par plugin, vérifiés par signature. |
-| 🔑 **Licence intégrée** | Les capacités (résolution, watermark, formats) découlent du plan. Dégradation gracieuse plutôt que crash. |
+| 🧠 **Headless-first** | All the logic (project, commands, engines, export) runs in Node, with no device and no UI. Testable in milliseconds. |
+| 🔌 **Injected ports** | No hard native dependency: `NativeEncoder`, `Clock`, `LicenseValidator`, `StorageAdapter`, `PluginVerifier`, `FontManager`… are supplied by the integrator. |
+| 🎛️ **Replaceable UI** | The React components shipped here are a convenience, not a constraint. Plug your own into the same controllers. |
+| ↩️ **Everything goes through the CommandBus** | Every mutation is a command → undo/redo for free, history, serialisation. |
+| 🧩 **Extensible by registry** | Filters, stickers, transitions, object types: added by plugin, checked by signature. |
+| 🔑 **Licensing built in** | Capabilities (resolution, watermark, formats) follow from the plan. Graceful degradation rather than a crash. |
 
 ---
 
-## ✨ Fonctionnalités
+## ✨ Features
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
 **📸 Capture & photo**
-- Session caméra headless (état optique, ratios, capture → projet)
-- Éditeur photo : recadrage, calques, LUT GPU
-- Preview Skia composée en temps réel
+- Headless camera session (optical state, ratios, capture → project)
+- Photo editor: cropping, layers, GPU LUT
+- Skia preview composed in real time
 
-**🎞️ Vidéo & timeline**
-- Contrôleur d'édition vidéo headless
-- Timeline temps ↔ pixels, moteur de snap
-- Transport `play / pause / seek / loop` sur clock partagée
+**🎞️ Video & timeline**
+- Headless video editing controller
+- Time ↔ pixel timeline, snapping engine
+- `play / pause / seek / loop` transport on a shared clock
 
 </td>
 <td width="50%" valign="top">
 
-**🎨 Effets**
-- Filtres (catalogue + résolution de paramètres)
-- Textes animés (presets, animations, Font Manager)
-- Stickers (catégories, formats, animations)
-- Transitions avec contrainte d'overlap
+**🎨 Effects**
+- Filters (catalogue + parameter resolution)
+- Animated text (presets, animations, Font Manager)
+- Stickers (categories, formats, animations)
+- Transitions with an overlap constraint
 
-**🚀 Sortie**
-- Mixage audio (plan de mixage, gain avec fades)
-- Export en arrière-plan non bloquant (`JobQueue`)
-- Dégradation automatique selon la licence
+**🚀 Output**
+- Audio mixing (mix plan, gain with fades)
+- Non-blocking background export (`JobQueue`)
+- Automatic degradation according to the licence
 
 </td>
 </tr>
@@ -74,19 +74,19 @@ leur modèle de données. Media Studio fait l'inverse :
 
 ---
 
-## 🚀 Démarrage rapide
+## 🚀 Quick start
 
 ```bash
-git clone https://github.com/pasquelin/camera-editor.git
-cd camera-editor
+git clone https://github.com/pasquelin/media-studio.git
+cd media-studio
 pnpm install
 pnpm build
 ```
 
-> **Note** — les packages ne sont pas encore publiés sur npm. Le SDK se consomme
-> aujourd'hui depuis le monorepo (`workspace:*`) ou via l'app d'exemple.
+> **Note** — the packages are not published on npm yet. The SDK is consumed today
+> from the monorepo (`workspace:*`) or through the example app.
 
-### Headless — sans device, sans UI
+### Headless — no device, no UI
 
 ```ts
 import {
@@ -103,19 +103,19 @@ const studio = createMediaStudio({
   exportRenderer: createExportRenderer({ primary: nativeEncoder, license }),
 });
 
-// Toute mutation passe par le CommandBus → undo/redo gratuit
+// Every mutation goes through the CommandBus → undo/redo for free
 studio.core.execute("video.create", {
   id: "v1",
   object: { source: "clip.mp4", startTime: 0, endTime: 5000, trim: { start: 0, end: 5000 } },
 });
-studio.core.execute("text.create", { id: "t1", object: { content: "Bonjour 👋" } });
+studio.core.execute("text.create", { id: "t1", object: { content: "Hello 👋" } });
 studio.core.undo();
 
-// Export non bloquant : l'app reste utilisable
+// Non-blocking export: the app stays usable
 const job = studio.exportProject({ ...DEFAULT_EXPORT_CONFIG, resolution: "4k" });
 ```
 
-### React Native — provider + éditeur
+### React Native — provider + editor
 
 ```tsx
 import { MediaStudioProvider, MediaStudio, useMediaStudio } from "@media-studio/ui";
@@ -131,17 +131,17 @@ export default function App() {
 
 function Home() {
   const { open, jobs } = useMediaStudio();
-  return <Button title="Éditer" onPress={open} />;
+  return <Button title="Edit" onPress={open} />;
 }
 ```
 
-### Voir tourner
+### See it run
 
 ```bash
-# Démo headless exécutable (Node, aucun device requis)
+# Runnable headless demo (Node, no device required)
 pnpm -F @media-studio/example-headless start
 
-# App Expo complète (capture → recadrage → édition → export)
+# Full Expo app (capture → crop → edit → export)
 pnpm -F @media-studio/example-studio-app start
 ```
 
@@ -151,13 +151,13 @@ pnpm -F @media-studio/example-studio-app start
 
 ```mermaid
 flowchart TD
-    UI["@media-studio/ui<br/><i>Provider, hooks, composants React</i>"]
-    SDK["@media-studio/sdk<br/><i>façade createMediaStudio</i>"]
+    UI["@media-studio/ui<br/><i>Provider, hooks, React components</i>"]
+    SDK["@media-studio/sdk<br/><i>createMediaStudio facade</i>"]
     CORE["@media-studio/core<br/><i>ProjectManager · CommandBus · registries</i>"]
-    ENG["Moteurs headless<br/><i>filter · text · sticker · transition · audio</i>"]
+    ENG["Headless engines<br/><i>filter · text · sticker · transition · audio</i>"]
     SVC["Services<br/><i>licensing · timeline · runtime · camera · asset-manager</i>"]
     JOBS["background-jobs + export-engine<br/><i>JobQueue → ExportRenderer</i>"]
-    PORT["Ports injectés<br/><i>NativeEncoder · Clock · Storage · Verifier</i>"]
+    PORT["Injected ports<br/><i>NativeEncoder · Clock · Storage · Verifier</i>"]
     NAT["modules/media-studio-export<br/><i>FFmpeg · AVFoundation · MediaCodec</i>"]
 
     UI --> SDK --> CORE
@@ -170,91 +170,93 @@ flowchart TD
     style PORT fill:#1f2937,stroke:#fbbf24,color:#fff
 ```
 
-**Règle d'or** : la logique ne dépend jamais du natif. Le natif est branché à
-l'exécution via un port. C'est ce qui rend la chaîne testable en Node et le rendu
-remplaçable.
+**Golden rule**: the logic never depends on the native side. Native code is plugged
+in at runtime through a port. That is what makes the whole chain testable in Node
+and the rendering replaceable.
 
 ---
 
 ## 📦 Packages
 
-| Package | Rôle |
+| Package | Role |
 |---|---|
-| [`core`](./packages/core) | Noyau pur : `ProjectManager`, `CommandBus`, registries, commandes built-in |
-| [`sdk`](./packages/sdk) | Point d'entrée unique + façade `createMediaStudio` |
-| [`ui`](./packages/ui) | Couche React : `MediaStudioProvider`, hooks, `<MediaStudio>`, theming |
-| [`camera`](./packages/camera) | Session de capture headless (état optique, capture → projet) |
-| [`photo-editor`](./packages/photo-editor) · [`video-editor`](./packages/video-editor) | Contrôleurs d'édition headless |
-| [`filter-engine`](./packages/filter-engine) | Catalogue de filtres + résolution de paramètres |
+| [`core`](./packages/core) | Pure core: `ProjectManager`, `CommandBus`, registries, built-in commands |
+| [`sdk`](./packages/sdk) | Single entry point + the `createMediaStudio` facade |
+| [`ui`](./packages/ui) | React layer: `MediaStudioProvider`, hooks, `<MediaStudio>`, theming |
+| [`camera`](./packages/camera) | Headless capture session (optical state, capture → project) |
+| [`photo-editor`](./packages/photo-editor) · [`video-editor`](./packages/video-editor) | Headless editing controllers |
+| [`filter-engine`](./packages/filter-engine) | Filter catalogue + parameter resolution |
 | [`text-engine`](./packages/text-engine) | Presets, animations, Font Manager |
-| [`sticker-engine`](./packages/sticker-engine) | Catégories, formats, animations, registry |
-| [`transition-engine`](./packages/transition-engine) | Catalogue de transitions + contrainte d'overlap |
-| [`audio-engine`](./packages/audio-engine) | Plan de mixage, gain avec fades, validation des rôles |
-| [`music-library`](./packages/music-library) | Bibliothèque musicale (catalogue + `MusicSource` remplaçable) |
-| [`runtime`](./packages/runtime) | Machine de transport `play / pause / seek / loop` |
-| [`timeline`](./packages/timeline) | Conversion temps ↔ pixels + moteur de snap |
-| [`renderer/preview`](./packages/renderer/preview) | `PreviewRenderer` Skia (composition des calques) |
-| [`background-jobs`](./packages/background-jobs) | File d'export non bloquante (`JobQueue`) |
-| [`export-engine`](./packages/export-engine) | Dégradation licence + `ExportRenderer` (port `NativeEncoder`) |
-| [`licensing`](./packages/licensing) | Plans → capacités (`createLicense`) |
-| [`security`](./packages/security) | Vérification de signature des plugins |
-| [`asset-manager`](./packages/asset-manager) | Registry de `ResourcePack` + gating licence |
-| [`cli`](./packages/cli) | CLI `media-studio` (`init`, `new-project`, `create-plugin`, `doctor`) |
+| [`sticker-engine`](./packages/sticker-engine) | Categories, formats, animations, registry |
+| [`transition-engine`](./packages/transition-engine) | Transition catalogue + overlap constraint |
+| [`audio-engine`](./packages/audio-engine) | Mix plan, gain with fades, role validation |
+| [`music-library`](./packages/music-library) | Music library (catalogue + replaceable `MusicSource`) |
+| [`runtime`](./packages/runtime) | `play / pause / seek / loop` transport machine |
+| [`timeline`](./packages/timeline) | Time ↔ pixel conversion + snapping engine |
+| [`renderer/preview`](./packages/renderer/preview) | Skia `PreviewRenderer` (layer composition) |
+| [`background-jobs`](./packages/background-jobs) | Non-blocking export queue (`JobQueue`) |
+| [`export-engine`](./packages/export-engine) | Licence degradation + `ExportRenderer` (`NativeEncoder` port) |
+| [`licensing`](./packages/licensing) | Plans → capabilities (`createLicense`) |
+| [`security`](./packages/security) | Plugin signature verification |
+| [`asset-manager`](./packages/asset-manager) | `ResourcePack` registry + licence gating |
+| [`cli`](./packages/cli) | `media-studio` CLI (`init`, `new-project`, `create-plugin`, `doctor`) |
 
-Et à côté : [`modules/media-studio-export`](./modules) (module natif Expo),
-[`examples/`](./examples) (démo headless + app Expo),
-[`website/`](./website) (documentation Docusaurus publique).
+Alongside them: [`modules/media-studio-export`](./modules) (native Expo module),
+[`examples/`](./examples) (headless demo + Expo app),
+[`website/`](./website) (public Docusaurus documentation).
 
 ---
 
-## 🧑‍💻 Exemples
+## 🧑‍💻 Examples
 
-| Exemple | Ce qu'il montre |
+| Example | What it shows |
 |---|---|
-| [`examples/headless-demo`](./examples/headless-demo) | Toute la chaîne en Node : projet, commandes, undo/redo, licence & gating, catalogue, runtime, export en arrière-plan |
-| [`examples/studio-app`](./examples/studio-app) | App Expo complète : capture caméra, recadrage, éditeur (filtres LUT GPU, stickers, textes), timeline, export |
+| [`examples/headless-demo`](./examples/headless-demo) | The whole chain in Node: project, commands, undo/redo, licence & gating, catalogue, runtime, background export |
+| [`examples/studio-app`](./examples/studio-app) | Full Expo app: camera capture, cropping, editor (GPU LUT filters, stickers, text), timeline, export |
 
 ---
 
-## 🛠️ Développement
+## 🛠️ Development
 
 ```bash
-pnpm build        # build de tous les packages (Turborepo)
-pnpm typecheck    # typecheck strict
+pnpm build        # build every package (Turborepo)
+pnpm typecheck    # strict typecheck
 pnpm test         # tests (Vitest)
 pnpm lint         # lint
 pnpm format       # Prettier
-pnpm changeset    # préparer une release
+pnpm changeset    # prepare a release
 ```
 
-**Stack** : pnpm workspaces · Turborepo · TypeScript strict · Vitest · Changesets · tsup
+**Stack**: pnpm workspaces · Turborepo · strict TypeScript · Vitest · Changesets · tsup
 
-### Workflow Git
+### Git workflow
 
-| Branche | Rôle |
+| Branch | Role |
 |---|---|
-| `main` | Production uniquement |
-| `develop` | Intégration du développement — toutes les branches en partent |
-| `feat/*` `fix/*` `chore/*` | Branches de travail → PR vers `develop` |
+| `main` | Production only |
+| `develop` | Development integration — every branch starts here |
+| `feat/*` `fix/*` `chore/*` | Working branches → PR into `develop` |
 
 ---
 
 ## 📚 Documentation
 
-Le blueprint d'architecture est la **source de vérité** du projet : 28 documents
-numérotés du *pourquoi* vers le *comment*.
+The architecture blueprint is the project's **source of truth**: 28 documents
+numbered from *why* towards *how*.
 
-👉 **[docs/README.md](./docs/README.md)** — point d'entrée
+👉 **[docs/README.md](./docs/README.md)** — entry point
 
 | | |
 |---|---|
-| [Vision](./docs/00-VISION.md) | Mission, positionnement, principes |
-| [Architecture](./docs/01-ARCHITECTURE.md) | Couches, règles de dépendances, flux |
-| [Project Schema](./docs/02-PROJECT-SCHEMA.md) | Modèle de données, migrations |
-| [Plugin API](./docs/06-PLUGIN-API.md) | Points d'extension |
+| [Vision](./docs/00-VISION.md) | Mission, positioning, principles |
+| [Architecture](./docs/01-ARCHITECTURE.md) | Layers, dependency rules, flows |
+| [Project Schema](./docs/02-PROJECT-SCHEMA.md) | Data model, migrations |
+| [Plugin API](./docs/06-PLUGIN-API.md) | Extension points |
 | [Export Engine](./docs/09-EXPORT-ENGINE.md) | Pipeline, formats, codecs |
-| [Configuration](./docs/12-CONFIGURATION.md) | Contrat de paramétrage complet |
-| [Roadmap](./docs/10-ROADMAP.md) | Jalons de construction |
+| [Configuration](./docs/12-CONFIGURATION.md) | Full configuration contract |
+| [Roadmap](./docs/10-ROADMAP.md) | Build milestones |
+
+The blueprint itself is written in French.
 
 ---
 
